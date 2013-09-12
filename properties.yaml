@@ -1,6 +1,6 @@
 ---
-package : com.example
-project : my-project
-description : ~
-project_url : ~
-github_user : ~
+package : net.avh4.util
+project : lisp
+description : LISP parser for Java
+project_url : http://github.com/avh4/lisp-parser
+github_user : avh4
