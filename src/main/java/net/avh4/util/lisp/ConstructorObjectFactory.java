@@ -14,6 +14,9 @@ public class ConstructorObjectFactory implements ObjectFactory {
     @Override public Object create(Object[] args) {
         final Constructor<?>[] constructors = clazz.getConstructors();
         final Constructor<?> constructor = constructors[0];
+        if (args.length - 1 != constructor.getParameterTypes().length) {
+            throw new IllegalArgumentException(getUsage(constructor) + "\n got: " + Arrays.toString(args));
+        }
         for (int i = 0; i < constructor.getParameterTypes().length; i++) {
             Class<?> aClass = constructor.getParameterTypes()[i];
             if (aClass.isInstance(args[i + 1])) continue;

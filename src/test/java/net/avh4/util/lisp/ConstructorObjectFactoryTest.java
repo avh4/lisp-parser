@@ -39,4 +39,14 @@ public class ConstructorObjectFactoryTest {
             assertThat(e.getMessage()).contains("Symbol, String");
         }
     }
+
+    @Test
+    public void shouldProvideMessageForWrongNumberOfArguments() throws Exception {
+        try {
+            final Object o = subject.create(new Object[]{Symbol.s("animal"), Symbol.s("sheep")});
+            fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage()).contains("Symbol, String");
+        }
+    }
 }
