@@ -66,4 +66,10 @@ public class LispParserTest {
         assertThat(o).isInstanceOf(Iterable.class);
         assertThat((Iterable) o).containsSequence(Symbol.s("alien"), Symbol.s("cow"), "Zaaap!");
     }
+
+    @Test
+    public void shouldParseNestedList() throws Exception {
+        Object o = subject.parse("(1 2 (3 4))");
+        assertThat(o).isInstanceOf(Iterable.class);
+    }
 }
