@@ -16,9 +16,9 @@ public class ConstructorObjectFactory implements ObjectFactory {
         final Constructor<?> constructor = constructors[0];
         for (int i = 0; i < constructor.getParameterTypes().length; i++) {
             Class<?> aClass = constructor.getParameterTypes()[i];
-            if (!aClass.isInstance(args[i + 1])) {
-                throw new IllegalArgumentException(getUsage(constructor) + "\n got: " + Arrays.toString(args));
-            }
+            if (aClass.isInstance(args[i + 1])) continue;
+            if (aClass == Integer.TYPE && Integer.class.isInstance(args[i + 1])) continue;
+            throw new IllegalArgumentException(getUsage(constructor) + "\n got: " + Arrays.toString(args));
         }
         try {
             return constructor.newInstance(Arrays.copyOfRange(args, 1, args.length));
