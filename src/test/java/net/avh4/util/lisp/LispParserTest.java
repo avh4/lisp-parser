@@ -78,4 +78,11 @@ public class LispParserTest {
         Object o = subject.parse("()");
         assertThat(o).isInstanceOf(Iterable.class);
     }
+
+    @Test
+    public void shouldParseListWithNewlines() throws Exception {
+        Object o = subject.parse("(\n1\n)");
+        assertThat(o).isInstanceOf(Iterable.class);
+        assertThat((Iterable) o).containsExactly(1);
+    }
 }

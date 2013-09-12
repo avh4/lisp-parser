@@ -47,7 +47,7 @@ public class LispParser {
         while (true) {
             c = pr.read();
             if (c == -1) break;
-            if (c == ' ' || c == ')') {
+            if (Character.isWhitespace(c) || c == ')') {
                 pr.unread(c);
                 break;
             }
@@ -82,7 +82,7 @@ public class LispParser {
             c = pr.read();
             if (c == -1) break;
             if (c == ')') break;
-            if (c == ' ') continue;
+            if (Character.isWhitespace(c)) continue;
             pr.unread(c);
             final Object o = parse(pr);
             values.add(o);
