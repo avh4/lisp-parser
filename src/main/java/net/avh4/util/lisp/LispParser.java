@@ -18,7 +18,9 @@ public class LispParser {
             }
             if (values[0] instanceof Symbol) {
                 final ObjectFactory factory = context.get((Symbol) values[0]);
-                return factory.create(values);
+                if (factory != null) {
+                    return factory.create(values);
+                }
             }
             return Arrays.asList(values);
         } else if (lisp.charAt(0) == '"') {

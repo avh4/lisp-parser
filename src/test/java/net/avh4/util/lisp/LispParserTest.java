@@ -59,4 +59,11 @@ public class LispParserTest {
         Object o = subject.parse("(animal cow \"Moo\")");
         assertThat(o).isEqualTo(new Animal(Symbol.s("cow"), "Moo"));
     }
+
+    @Test
+    public void shouldReturnListIfNoObjectFactoryIsProvided() throws Exception {
+        Object o = subject.parse("(alien cow \"Zaaap!\")");
+        assertThat(o).isInstanceOf(Iterable.class);
+        assertThat((Iterable) o).containsSequence(Symbol.s("alien"), Symbol.s("cow"), "Zaaap!");
+    }
 }
