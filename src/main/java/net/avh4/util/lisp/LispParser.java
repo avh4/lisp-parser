@@ -87,7 +87,7 @@ public class LispParser {
             final Object o = parse(pr);
             values.add(o);
         }
-        if (values.get(0) instanceof Symbol) {
+        if (values.size() > 0 && values.get(0) instanceof Symbol) {
             final ObjectFactory factory = context.get((Symbol) values.get(0));
             if (factory != null) {
                 return factory.create(values.toArray());

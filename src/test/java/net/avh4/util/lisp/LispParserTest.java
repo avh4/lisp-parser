@@ -72,4 +72,10 @@ public class LispParserTest {
         Object o = subject.parse("(1 2 (3 4))");
         assertThat(o).isInstanceOf(Iterable.class);
     }
+
+    @Test
+    public void shouldParseEmptyList() throws Exception {
+        Object o = subject.parse("()");
+        assertThat(o).isInstanceOf(Iterable.class);
+    }
 }
